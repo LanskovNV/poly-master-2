@@ -1,0 +1,56 @@
+\documentclass[12pt]{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+
+\begin{document}
+
+11. 
+
+Задача: Доказать полиномиальную эквивалентность задач о клике (К),
+вершинном покрытии (ВП) и независимом множестве (НМ) в графе.
+
+Решение:
+
+\begin{enumerate}
+    \item К $\propto$ НМ, НМ $\propto$ К
+
+        В $G ~\exists$ множество клика W размера не менее B $\iff$ 
+        в $\overline{G} ~\exists$ НМ размера не менее B, где
+        $\overline{G}$ - Граф: $V(\overline{G}) = V(G), E(\overline{G})~$ 
+        - все рёбра, которых нет в G и только они.
+
+        Понятно, что $\forall ~ u,v \in W: uv \in E(G)$, тогда для той же
+        пары u и v $uv \notin E(\overline{G})$, по построению.
+
+    \item ВП $\propto$ НМ, НМ $\propto$ ВП
+
+        В $G~\exists$ НМ W размера не менее B $\iff$
+        в $G~\exists$ ВП размера не менее $n-B, n=v(G)$ 
+
+        Если W - НМ $\Rightarrow \forall ~ u,v \in HM, uv \notin E(G) ~ \Rightarrow$
+        все рёбра покрыты оставшимися вершинами из 
+        $ V(G) \backslash W \iff ~ \forall ~ e \in E(G) ~ \exists u \in V(G) \backslash W:$
+        $u \in V(e)$
+
+        Аналогично, если в $G~ \exists ~ $ ВП W размера не менее B $\Rightarrow$ в $G ~ \exists ~$ НМ
+        размера не менее $n-B$
+        Таким образом между любыми двумя вершинами из $V(G) \backslash W$ нет ребра, иначе хотя бы
+        одна из них входила в вершинное покрытие.
+
+    \item К $\propto$ ВП, ВП $\propto$ К
+
+        По транзитивности:
+
+        К $\propto$ НМ, НМ $\propto$ ВП $\Rightarrow$ К $\propto$ ВП
+
+        ВП $\propto$ НМ, НМ $\propto$ К $\Rightarrow$ ВП $\propto$ К
+\end{enumerate}
+
+Таким образом, все эти задачи полиномиально эквивалентны.
+
+
+\end{document}
