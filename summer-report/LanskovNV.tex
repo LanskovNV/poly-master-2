@@ -1,37 +1,26 @@
 \documentclass[a4papaer,12pt]{article}
 
 \usepackage[left=25mm, top=20mm, right=25mm, bottom=30mm,nohead,nofoot]{geometry}
-
-% locale settings
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english,russian]{babel}
-
-% graphics settings
 \usepackage[compatibility=false]{caption}
 \usepackage{subcaption}
 \usepackage{wrapfig}
 \usepackage{graphics, graphicx}
 \graphicspath{{./images/}}
 \setcounter{tocdepth}{4}
-
-% hyperlinks settings
 \usepackage{hyperref}
 \hypersetup{unicode=true}
-
-% math symbols
 \usepackage{amssymb,latexsym} 
 \usepackage{MnSymbol}
 \usepackage{mathrsfs}
-
-% other settings
 \usepackage[nottoc,numbib]{tocbibind}
 \usepackage{float}
 \usepackage{listings}
 \usepackage{multirow}
 \usepackage{hhline}
 \usepackage{delarray}
-
 \usepackage{color,colortbl}
 
 \renewcommand{\listoffigures}{\begingroup  % add number to list of graphics
@@ -70,13 +59,33 @@
 \\ 2021
 \end{titlepage}
 
+\tableofcontents
+
 \section{Введение}
-\section{Менеджерские задачи}
+В ходе летней практики я работал в компании ITS. Я решал много различных задач для разных проектов. Также 
+в ходе практики я получил опыт управления командами разработчиков, общения с заказчиками и планирования проектов.
+Это был интересный управленческий опыт, однако в рамках данного отчёта я опишу только технические задачи, 
+которые были решены мной в рамках практики.
+
 \section{Шаблонизация openresty}
-\subsection{Описание решения}
-\subsection{Добавление парсинга html тегов}
-\subsection{Добавление шаблонизации для страницы видео}
-\subsection{Создание отдельного вспомогательного функционального модуля}
+
+В экосистеме современных веб приложений обычно участвует веб сервер.
+В нашей компании мы используем в качестве веб сервера nginx.
+Nginx раздаёт клиентам по запросу статические файлы или перенаправляет
+поступивший запрос соответствующему приложению на нашем сервере.
+И иногда перед возвратом пользователю запрошенной html страницы требуется
+выполнить какие-то дополнительные действия. В частности, у нас появилась
+необходимость снабжать страницу, которая отправляется клиенту, определёнными метатегами,
+которые специфичны для каждой страницы. Чтобы автоматизировать данную задачу,
+мы используем openresty. Это такая технология, которая позволяет выполнять код на
+языке lua непосредственно при обработке nginx-ом запроса.
+Если в обычной конфигурации nginx для раздачи статических файлов используется директива
+\textbf{try\_files}, то с openresty мы заменяем один \textbf{location} блок на три:
+в первом у нас обычная директива \textbf{try\_files}, если мы находим нужный файл
+- отдаём его, если нет - переходим во второй \textbf{location} блок, в котором нгинкс
+просто выполняет код скрипта на lua. И после этого мы переходим в последний блок-обработчик,
+который уже отдаёт запрошенный файл, который был сгенерирован скриптом.
+
 \section{Автоматизация деплоя при помощи docker-compose и bash}
 \section{CRUD бэкенд для приложения поиска работы}
 \section{Телеграм бот - трекер калорий}

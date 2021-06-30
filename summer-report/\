@@ -1,0 +1,89 @@
+\documentclass[a4papaer,12pt]{article}
+
+\usepackage[left=25mm, top=20mm, right=25mm, bottom=30mm,nohead,nofoot]{geometry}
+
+% locale settings
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+
+% graphics settings
+\usepackage[compatibility=false]{caption}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\usepackage{graphics, graphicx}
+\graphicspath{{./images/}}
+\setcounter{tocdepth}{4}
+
+% hyperlinks settings
+\usepackage{hyperref}
+\hypersetup{unicode=true}
+
+% math symbols
+\usepackage{amssymb,latexsym} 
+\usepackage{MnSymbol}
+\usepackage{mathrsfs}
+
+% other settings
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{delarray}
+
+\usepackage{color,colortbl}
+
+\renewcommand{\listoffigures}{\begingroup  % add number to list of graphics
+\tocsection
+\tocfile{\listfigurename}{lof}
+\endgroup}
+\renewcommand{\listoftables}{\begingroup  % add number to list of tables
+\tocsection
+\tocfile{\listtablename}{lot}
+\endgroup}
+
+\begin{document}
+\begin{titlepage}
+	\center
+		Санкт-Петербургский Политехнический
+		университет \\ Петра Великого\\
+		Институт прикладной математики и механики
+		\\ \textbf{Высшая школа прикладной математики и вычислительной физики}
+
+	\vfill ~
+	\textbf{
+		\\ \large Отчёт
+	}
+    \\ о летней производственной практике 
+
+	\vfill ~
+
+    \begin{flushleft}
+    \underline{Выполнил:}  \hspace{\fill} студент гр.3640102/00201 \textbf{Лансков Н.В.} \linebreak[2]
+	\underline{Руководитель:} \hspace{\fill} \textbf{Савчук Д.А.} \\
+    \end{flushleft}
+
+\vfill
+
+{\large}	Санкт-Петербург
+\\ 2021
+\end{titlepage}
+
+\tableofcontents
+\listoftables
+\listoffigures
+
+\section{Введение}
+\section{Менеджерские задачи}
+\section{Шаблонизация openresty}
+\subsection{Описание решения}
+\subsection{Добавление парсинга html тегов}
+\subsection{Добавление шаблонизации для страницы видео}
+\subsection{Создание отдельного вспомогательного функционального модуля}
+\section{Автоматизация деплоя при помощи docker-compose и bash}
+\section{CRUD бэкенд для приложения поиска работы}
+\section{Телеграм бот - трекер калорий}
+
+\end{document}
+
